@@ -5,11 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 
 export default function TaskModal({id, showModal, modalVisibility, desc , isdone, onDeleteClick , handleStateEvent }) {
-    const [isSwitchOn, setSwicthState] = useState(false);
-    const changeSwitchState = () => {
-        setSwicthState(!isSwitchOn)
-    }
-
+    
     const onPressDelete=()=>{
         onDeleteClick(id);
     }
@@ -25,7 +21,6 @@ export default function TaskModal({id, showModal, modalVisibility, desc , isdone
                 style={taskModalStyle.modalContainer}
                 onPress={modalVisibility}
             >
-
                 <View style={taskModalStyle.modalStyle}>
                 <View style = {taskModalStyle.closeStyle}>
                     <Entypo.Button name="cross" style={{padding : 0 , margin : 0 }} backgroundColor='transparent' underlayColor='transparent' size={28} color="black" onPress={modalVisibility} />
