@@ -20,7 +20,15 @@ export const tasksSlice = createSlice({
     name: 'Tasks',
     initialState,
     reducers: {
+        setTasks:(state , actions )=>{
+            console.log("#====> In Set Task <====#")
+            state.listTask = actions.payload;
+
+            console.log("State " , state.listTask)
+
+        },
         addTask: (state, actions) => {
+            console.log("#====> In Add Task <====#")
             state.listTask.push(
                 {
                     id: actions.payload.id,
@@ -47,5 +55,5 @@ export const tasksSlice = createSlice({
 
 })
 
-export const { addTask, deleteTask, changeStateTask } = tasksSlice.actions;
+export const { setTasks ,addTask, deleteTask, changeStateTask } = tasksSlice.actions;
 export default tasksSlice.reducer;

@@ -3,7 +3,7 @@ import { View, SafeAreaView,Platform } from 'react-native';
 import Header from './src/components/header/header';
 import Form from './src/components/Form/form';
 import styles from './src/styles/main';
-import { useEffect } from 'react';
+
 import Tasks from './src/components/Tasks/tasks';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,34 +13,25 @@ import { MaterialIcons } from '@expo/vector-icons';
 import SettingScreen from './src/components/Setting/setting_screen';
 import { store } from './src/Redux/store';
 import {Provider} from 'react-redux';
+import AppLoader from './src/appLoader';
 
 SplashScreen.preventAutoHideAsync().then((prevented) => {
-  console.log("Prevented => ", prevented)
+  // console.log("Prevented => ", prevented)
 }
 ).catch(
   (error) => {
-    console.log("Error => ", error)
+    // console.log("Error => ", error)
   }
 );
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  
-  useEffect(() => {
-    console.log("Initiating starter..")
-    SplashScreen.hideAsync().then((e) => {
-      console.log("t => ", e)
-    }
-    ).catch(
-      (error) => {
-        console.log("E => ", error)
-      }
-    );
-  }, [])
+ 
 
   return (
     <Provider store={store}>
+    <AppLoader/>
     <NavigationContainer>
       <SafeAreaView style={{ paddingTop: Platform.OS == 'ios' ? 0 : 25, backgroundColor: "#DAECEC" }}>
         <StatusBar style='auto' ></StatusBar>

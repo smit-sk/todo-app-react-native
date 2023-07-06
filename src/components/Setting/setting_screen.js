@@ -10,14 +10,18 @@ export default function SettingScreen() {
         dispatch(toggleAllowDelete());
     }
 
-   const allowDelete = useSelector((state)=>state.preference.allowDelete);
+  const allowDelete = useSelector((state)=>state.preference.allowDelete);
   const dispatch = useDispatch();
-
  
   return (
+    <View style={settingStyle.maincontainer}>
+    <Text style = {settingStyle.headingStyle}>Preference : </Text>
     <View style={settingStyle.container} >
-      <Switch value ={allowDelete} onChange={changeDeletePemission} />
+      <Switch value ={allowDelete} onChange={changeDeletePemission} 
+      trackColor={{false: '#daecec', true: '#008080' }} 
+          ios_backgroundColor="#daecec" />
       <Text> Switch to allow user to delete tasks. </Text>
+    </View>
     </View>
   )
 }

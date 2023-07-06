@@ -1,4 +1,4 @@
-import { View, ScrollView} from 'react-native'
+import { View, ScrollView , Text} from 'react-native'
 import taskContainer from './styles'
 import Task from './task/task'
 import {React} from 'react';
@@ -12,14 +12,15 @@ export default function Tasks() {
   return (
       <View style={taskContainer.container}>
        <ScrollView>
-        {taskList.map((task, index) => (
+       
+        {taskList.length !=0 ? taskList.map((task, index) => (
           <Task 
             key = {task.id}
             id = {task.id}
             description={task.description}
             done ={task.done}
             />
-        ))}
+        )) : <Text>No task added...</Text>}
         </ScrollView>      
       </View>
   

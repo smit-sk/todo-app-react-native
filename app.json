@@ -18,9 +18,12 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.smitkumar.todoapp",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.smitkumar.todoapp",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
