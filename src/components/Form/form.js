@@ -18,24 +18,22 @@ export  default function Form() {
   const dispatch = useDispatch();
 
   const AddTask =  async (desc, done) => {
-
+    
     const data = {
-      id: uuid(),
+      // id: uuid(),
       description: desc,
       done: done
     }
 
     console.log(data)
     setLoader(true);
-    
     const id = await database.save(data); 
-    
+
     console.log("ID=> ", id)
     if (id !=null) {
       data.id = id;
       console.log("proceed data", data);
       dispatch(addTask(data));
-  
       setLoader(false);
       setErrorMsg(null);
       setTaskDescription("");
