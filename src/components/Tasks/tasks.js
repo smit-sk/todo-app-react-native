@@ -20,7 +20,7 @@ export default function Tasks() {
             description={task.description}
             done ={task.done}
             />
-        )) : <Text>No task added...</Text>}
+        )) : <View style={taskContainer.noTaskContainer}><Text style={taskContainer.noTaskText}>No task added...</Text></View>}
         </ScrollView>      
       </View>
   

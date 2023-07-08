@@ -3,10 +3,11 @@ import { React, useState } from 'react'
 import taskstyles from './style'
 import TaskModal from '../Modal/taskModal';
 import { useSelector, useDispatch } from 'react-redux';
+import * as database from '../../../database';
 import { deleteTask, changeStateTask } from '../../../Redux/tasks_slice';
 
 export default function Task({ id, description, done }) {
-  const allowDelete = useSelector((state)=>state.preference.allowDelete)
+  const allowDelete = useSelector((state) => state.preference.allowDelete)
   const dispatch = useDispatch();
 
   const handleDeletePress = () => {
@@ -15,13 +16,18 @@ export default function Task({ id, description, done }) {
       {
         text: allowDelete ? "Delete" : "Okay",
         style: allowDelete ? 'destructive' : undefined,
-        onPress: () => {
-          allowDelete ? dispatch(deleteTask({id})) : null ;
+        onPress: async () => {
+          if(allowDelete){
+          var result = await database.deleteTask(id);
+          if(result){
+            allowDelete ? dispatch(deleteTask({ id })) : null;
+          }
+        }
         }
       },
       {
         text: "Cancel",
-        style : 'cancel',
+        style: 'cancel',
         onPress: () => {
 
         }
@@ -29,8 +35,19 @@ export default function Task({ id, description, done }) {
     ])
   }
 
-  const handleStateChange = () => {
-    dispatch(changeStateTask({id}))
+  const handleStateChange = async () => {
+
+
+    var result = await database.update(id, { done: !done });
+    if (result) {
+      dispatch(changeStateTask({ id }))
+    } else {
+      Alert.alert("Network Error", 'Failed to update task status', {
+        text: "Okay",
+        onPress: () => {
+        }
+      },)
+    }
   }
 
 

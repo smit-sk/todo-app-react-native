@@ -11,10 +11,10 @@ function AppLoader() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Loading Firebase Database
+    // Loading Firebase Database 
     
     (async () => {
-      const loadeddata = await database.publishedData();
+      const loadeddata = await database.load();
       console.log("My Function...", loadeddata)
       dispatch(setTasks(loadeddata));
     })();

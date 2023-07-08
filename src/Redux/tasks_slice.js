@@ -23,12 +23,11 @@ export const tasksSlice = createSlice({
         setTasks:(state , actions )=>{
             console.log("#====> In Set Task <====#")
             state.listTask = actions.payload;
-
             console.log("State " , state.listTask)
 
         },
         addTask: (state, actions) => {
-            console.log("#====> In Add Task <====#")
+            console.log("#====> In Set Task <====#")
             state.listTask.push(
                 {
                     id: actions.payload.id,
