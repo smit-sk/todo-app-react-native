@@ -36,8 +36,6 @@ export default function Task({ id, description, done }) {
   }
 
   const handleStateChange = async () => {
-
-
     var result = await database.update(id, { done: !done });
     if (result) {
       dispatch(changeStateTask({ id }))

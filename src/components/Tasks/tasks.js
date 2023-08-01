@@ -12,7 +12,6 @@ export default function Tasks() {
   return (
       <View style={taskContainer.container}>
        <ScrollView>
-       
         {taskList.length !=0 ? taskList.map((task, index) => (
           <Task 
             key = {task.id}

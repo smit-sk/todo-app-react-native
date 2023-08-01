@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import settingStyle from './styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleAllowDelete } from '../../Redux/preference_slice';
+import LocalNotification from './Local Notification';
 
 export default function SettingScreen() {
     
@@ -22,6 +23,7 @@ export default function SettingScreen() {
           ios_backgroundColor="#daecec" />
       <Text> Switch to allow user to delete tasks. </Text>
     </View>
+    <LocalNotification/>
     </View>
   )
 }
